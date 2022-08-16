@@ -26,7 +26,8 @@ After that run the following commands:
 ```
     
 ## Usage/Examples
-
+-----------------------------------------
+#### Usage:
 ```python
 #!/usr/bin/python3
 from proxy_ninja import fetch_proxies
@@ -37,7 +38,13 @@ fetch_proxies(PROXY_TYPE, OUTPUT_FILENAME, OUTPUT_FORMAT)
 - OUTPUT_FILENAME: Enter the filename
 - OUTPUT_FORMAT: txt/json
 
+#### Example:
+```python
+#!/usr/bin/python3
+from proxy_ninja import fetch_proxies
 
+fetch_proxies("socks", "socks_proxy", "json")
+```
 ## Features
 
 - ChromeDriver to scrape the site.
