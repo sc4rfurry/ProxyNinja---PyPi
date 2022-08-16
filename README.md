@@ -28,6 +28,9 @@ After that run the following commands:
 ## Usage/Examples
 -----------------------------------------
 #### Usage:
+
+==> Download the proxies.
+
 ```python
 #!/usr/bin/python3
 from proxy_ninja import fetch_proxies
@@ -38,6 +41,8 @@ fetch_proxies(PROXY_TYPE, OUTPUT_FILENAME, OUTPUT_FORMAT)
 - OUTPUT_FILENAME: Enter the filename
 - OUTPUT_FORMAT: txt/json
 
+-- proxies gonna save in parent dir.
+
 #### Example:
 ```python
 #!/usr/bin/python3
@@ -45,6 +50,26 @@ from proxy_ninja import fetch_proxies
 
 fetch_proxies("socks", "socks_proxy", "json")
 ```
+
+==> Get proxies as json
+```python
+#!/usr/bin/python3
+from proxy_ninja import fetch_proxies
+
+proxies_json(PROXY_TYPE)
+print(proxies)
+```
+- PROXY_TYPE: https/socks
+
+#### Example:
+```python
+#!/usr/bin/python3
+from proxy_ninja import fetch_proxies
+
+proxies_json("socks")
+print(proxies)
+```
+
 ## Features
 
 - ChromeDriver to scrape the site.
