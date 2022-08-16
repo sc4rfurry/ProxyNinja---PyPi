@@ -2,7 +2,7 @@
 # Proxy Ninja
 Python3 Module to get https or socks(4) proxies by scraping the web.
 ## Installation
-Bfore installing the module , please install the ChromiumDriver as following debian/kali
+Before installing the module , please install the ChromiumDriver as following debian/kali
 ```bash
     sudo apt-get update && sudo apt-get full-upgrade -y
     sudo apt-get install chromium-driver
