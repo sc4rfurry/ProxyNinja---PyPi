@@ -7,7 +7,7 @@ Before installing the module , please install the ChromiumDriver as following de
     sudo apt-get update && sudo apt-get full-upgrade -y
     sudo apt-get install chromium-driver
 ```
-Use the package manager [pip](https://pip.pypa.io/en/stable/) to module.
+Use the package manager [pip](https://pip.pypa.io/en/stable/) to install the module.
 if not installed, install it using the following command.
 ```bash
 sudo apt-get install python3-pip
