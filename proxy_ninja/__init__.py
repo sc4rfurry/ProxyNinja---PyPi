@@ -66,7 +66,7 @@ def get_proxies(driver, proxy_type, output_filename, output_format):
             url = "https://sslproxies.org"
         elif proxy_type == "socks":
             url = "https://www.socks-proxy.net"
-        else:    
+        else:
             exit("""Please Select a Valid Proxy Type.
                     => https
                     => socks""")
@@ -84,9 +84,11 @@ def get_proxies(driver, proxy_type, output_filename, output_format):
             for i in range(len(headers)):
                 proxy_data[headers[i]] = tds[i].text.strip()
             proxies.append(proxy_data)
-        json_prox = dumps(proxies)
-        iO_func(json_prox, proxy_type, output_filename, output_format)
-        sleep(2)
+        if output_filename != "None":
+            json_prox = dumps(proxies)
+            iO_func(json_prox, proxy_type, output_filename, output_format)
+        else:
+            return proxies
     except Exception as err:
         console.print("[" + "[red bold]Error[/red bold]" + "]" + f"[bold blink] {err}...![/bold blink]")
         exit(1)
@@ -118,7 +120,7 @@ def chrome_driver(proxy_type, output_filename, output_format):
         chrome_options.add_argument(f"user-agent={agent}")
 
         sleep(2)
-        # Initializing Chromium Driver 
+        # Initializing Chromium Driver
         driver = webdriver.Chrome(options=chrome_options)
 
         # Stealth Selenium Options
@@ -152,4 +154,16 @@ def fetch_proxies(proxy_type, output_filename, output_format):
     else:
         exit("""
         ChromeDriver is not installed. Please install it.
-            => sudo apt install chromium-chromedriver""")
+            => sudo apt-get install chromium-driver""")
+
+
+def proxies_json(proxy_type):
+    if _driver is not None:
+        _type = str(proxy_type)
+        _filename = "None"
+        _format = "json"
+        chrome_driver(_type, _filename, _format)
+    else:
+        exit("""
+        ChromeDriver is not installed. Please install it.
+            => sudo apt-get install chromium-driver""")
