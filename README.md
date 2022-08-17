@@ -22,7 +22,7 @@ sudo apt-get install python3-pip
 ```
 After that run the following commands:
 ```bash
-  python3 -m pip install <pkg>
+  python3 -m pip install <pkg> -U
 ```
     
 ## Usage/Examples
@@ -54,27 +54,29 @@ fetch_proxies("socks", "socks_proxy", "json")
 ==> Get proxies as json
 ```python
 #!/usr/bin/python3
-from proxy_ninja import fetch_proxies
+from proxy_ninja import proxies_json
 
-proxies_json(PROXY_TYPE)
-print(proxies)
+json_list = proxies_json(PROXY_TYPE)
+print(json_list)
 ```
 - PROXY_TYPE: https/socks
+
+> This will gonna return a list.
 
 #### Example:
 ```python
 #!/usr/bin/python3
-from proxy_ninja import fetch_proxies
+from proxy_ninja import proxies_json
 
-proxies_json("socks")
-print(proxies)
+json_list = proxies_json("https")
+print(json_list)
 ```
 
 ## Features
 
 - ChromeDriver to scrape the site.
 - Stealth Profle implmented.
-- save output in txt or json format.
+- Save output in txt or json format.
 - User Friendly. :D
 
 

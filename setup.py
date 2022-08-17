@@ -9,8 +9,8 @@ classifiers = [
 ]
  
 setup(
-  name='proxy_ninja',
-  version='0.0.2.0',
+  name='proxy-ninja',
+  version='0.1.0',
   description='Python3 library for scraping http/https and socks(4) proxies.',
   long_description=open('README.md').read() + '\n\n' + open('CHANGELOG.md').read(),
   long_description_content_type="text/markdown",
@@ -19,7 +19,7 @@ setup(
   author_email='akalucifr@protonmail.ch',
   license='MIT', 
   classifiers=classifiers,
-  keywords='calculator', 
+  keywords=['proxy', 'free proxy', 'proxy grabber', 'http proxy', 'https proxy', 'socks proxy', 'socks4 proxy', 'socks5 proxy'],
   packages=find_packages(),
   install_requires=[
 'selenium',

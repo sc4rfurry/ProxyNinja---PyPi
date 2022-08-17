@@ -9,8 +9,9 @@ from rich.console import Console
 from json import dumps
 from json import loads as ld
 from random import choice
-from time import sleep
 
+
+__all__ = ["fetch_proxies", "proxies_json"]
 
 
 # Rich Lib Object Intialization--->
@@ -60,8 +61,9 @@ def iO_func(json_prox, proxy_type, output_filename, output_format):
 
 # Get Proxies by Scraping the site
 def get_proxies(driver, proxy_type, output_filename, output_format):
+    global proxy_list_json
+    proxy_list_json = []
     try:
-        sleep(1)
         if proxy_type == "https":
             url = "https://sslproxies.org"
         elif proxy_type == "socks":
@@ -88,7 +90,8 @@ def get_proxies(driver, proxy_type, output_filename, output_format):
             json_prox = dumps(proxies)
             iO_func(json_prox, proxy_type, output_filename, output_format)
         else:
-            return proxies
+            proxy_list_json = proxies
+            return proxy_list_json
     except Exception as err:
         console.print("[" + "[red bold]Error[/red bold]" + "]" + f"[bold blink] {err}...![/bold blink]")
         exit(1)
@@ -119,7 +122,6 @@ def chrome_driver(proxy_type, output_filename, output_format):
         chrome_options.add_argument('--disk-cache-dir=/tmp/cache-dir')
         chrome_options.add_argument(f"user-agent={agent}")
 
-        sleep(2)
         # Initializing Chromium Driver
         driver = webdriver.Chrome(options=chrome_options)
 
@@ -158,11 +160,15 @@ def fetch_proxies(proxy_type, output_filename, output_format):
 
 
 def proxies_json(proxy_type):
+    global json_proxy_list
+    json_proxy_list = []
     if _driver is not None:
         _type = str(proxy_type)
         _filename = "None"
         _format = "json"
         chrome_driver(_type, _filename, _format)
+        json_proxy_list = proxy_list_json
+        return json_proxy_list
     else:
         exit("""
         ChromeDriver is not installed. Please install it.
